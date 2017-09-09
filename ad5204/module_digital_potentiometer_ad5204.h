@@ -27,12 +27,12 @@ constexpr ad5204< COUNT >::ad5204 ( ad5204_struct_cfg_t* cfg ) : cfg( cfg ) {}
 
 template < uint8_t COUNT >
 void ad5204< COUNT >::connect_on ( void ) {
-    this->cfg->shdn->reset();
+    this->cfg->shdn->set();
 }
 
 template < uint8_t COUNT >
 void ad5204< COUNT >::connect_off ( void ) {
-    this->cfg->shdn->set();
+    this->cfg->shdn->reset();
 }
 
 // Смотрим, сколько целых байт занимает буфер +
