@@ -67,7 +67,7 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
         USER_OS_TAKE_MUTEX( *this->cfg->mutex, portMAX_DELAY );
 
     this->cfg->cs->reset();
-    if ( this->cfg->spi->tx( b, AD5204_BUF_SIZE, 10 ) != EC_SPI_BASE_RESULT::OK )
+    if ( this->cfg->spi->tx( b, AD5204_BUF_SIZE, 10 ) != SPI::BASE_RESULT::OK )
         while( true );
     this->cfg->cs->set();
 
