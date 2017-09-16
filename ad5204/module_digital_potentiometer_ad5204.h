@@ -50,8 +50,8 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
 
 
     for ( uint32_t l = 0; l < COUNT; l++ ) {
-        b[ p_b ]    |= this->buf[ chip_number ][reg] << sm;
-        b[ p_b + 1] |= this->buf[ chip_number ][reg] >> ( 8 - sm );
+        b[ p_b ]    |= this->buf[ l ][reg] << sm;
+        b[ p_b + 1] |= this->buf[ l ][reg] >> ( 8 - sm );
         p_b++;
         b[ p_b ]    |= reg << sm;
         b[ p_b + 1] |= reg >> ( 8 - sm );
