@@ -37,14 +37,14 @@ void ad5204< COUNT >::connect_off ( void ) {
 
 // Смотрим, сколько целых байт занимает буфер +
 // если хоть 1 бит еще нужен сверху целого количества, добавляем 1 байт.
-#define AD5204_BUF_SIZE                ( ( COUNT * 11 ) / 8 ) + ( ( ( COUNT * 11 ) % 8) != 0 ) ? 1 : 0
+#define AD5204_BUF_SIZE(COUNT)                ( ( COUNT * 11 ) / 8 ) + ( ( ( ( COUNT * 11 ) % 8) != 0 ) ? 1 : 0 )
 
 template < uint8_t COUNT >
 EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, uint8_t value ) {
     if ( ( chip_number >= COUNT ) | ( reg >= 4 ) ) return EC_AD5204_ANSWER::ARG_ERROR;
 
     this->buf[ chip_number ][reg] = value;      // Сохраняем у себя дубликат.
-    uint8_t b[ AD5204_BUF_SIZE ] = { 0 };       // Буфер на вывод по SPI.
+    uint8_t b[ AD5204_BUF_SIZE(COUNT) ] = { 0 };       // Буфер на вывод по SPI.
     uint8_t p_b = 0;                            // Указатель на элемент буфера.
     uint8_t sm = 0;                             // Смещение от начала байта (справа).
 
@@ -67,7 +67,7 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
         USER_OS_TAKE_MUTEX( *this->cfg->mutex, portMAX_DELAY );
 
     this->cfg->cs->reset();
-    if ( this->cfg->spi->tx( b, AD5204_BUF_SIZE, 10 ) != SPI::BASE_RESULT::OK )
+    if ( this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10, SPI::STEP_MODE::DEC ) != SPI::BASE_RESULT::OK )
         while( true );
     this->cfg->cs->set();
 
