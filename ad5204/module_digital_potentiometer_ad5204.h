@@ -44,7 +44,7 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
     if ( ( chip_number >= COUNT ) | ( reg >= 4 ) ) return EC_AD5204_ANSWER::ARG_ERROR;
 
     this->buf[ chip_number ][reg] = value;      // Сохраняем у себя дубликат.
-    uint8_t b[ AD5204_BUF_SIZE(COUNT) ] = { 0 };       // Буфер на вывод по SPI.
+    uint8_t b[ AD5204_BUF_SIZE(COUNT) + 1 ] = { 0 };       // Буфер на вывод по SPI.
     uint8_t p_b = 0;                            // Указатель на элемент буфера.
     uint8_t sm = 0;                             // Смещение от начала байта (справа).
 
@@ -67,8 +67,7 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
         USER_OS_TAKE_MUTEX( *this->cfg->mutex, portMAX_DELAY );
 
     this->cfg->cs->reset();
-    if ( this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10, SPI::STEP_MODE::DEC ) != SPI::BASE_RESULT::OK )
-        while( true );
+    this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10, SPI::STEP_MODE::DEC );
     this->cfg->cs->set();
 
     if ( this->cfg->mutex != nullptr)
