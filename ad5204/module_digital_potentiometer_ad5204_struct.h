@@ -1,8 +1,8 @@
 #pragma once
 
 #include "user_os.h"
-#include "mk_hardware_interfaces_spi.h"
-#include "mk_hardware_interfaces_pin.h"
+#include "mc_hardware_interfaces_spi.h"
+#include "mc_hardware_interfaces_pin.h"
 
 struct ad5204_struct_cfg_t {
     spi_master_8bit_base*       const spi;
