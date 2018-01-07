@@ -58,7 +58,7 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
     if ( tx_res == BASE_RESULT::OK ) {
     	return EC_AD5204_ANSWER::OK;
     } else {
-    	EC_AD5204_ANSWER::SPI_ERROR;
+    	return EC_AD5204_ANSWER::SPI_ERROR;
     }
 }
 
