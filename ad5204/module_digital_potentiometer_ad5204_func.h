@@ -46,14 +46,20 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
     if ( this->cfg->mutex != nullptr)
         USER_OS_TAKE_MUTEX( *this->cfg->mutex, portMAX_DELAY );
 
+    SPI::BASE_RESULT tx_res;
+
     this->cfg->cs->reset();
-    this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10, SPI::STEP_MODE::DEC );
+    tx_res = this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10, SPI::STEP_MODE::DEC );
     this->cfg->cs->set();
 
     if ( this->cfg->mutex != nullptr)
         USER_OS_GIVE_MUTEX( *this->cfg->mutex );
 
-    return EC_AD5204_ANSWER::OK;
+    if ( tx_res == SPI::BASE_RESULT::OK ) {
+    	return EC_AD5204_ANSWER::OK;
+    } else {
+    	EC_AD5204_ANSWER::SPI_ERROR;
+    }
 }
 
 template < uint8_t COUNT >

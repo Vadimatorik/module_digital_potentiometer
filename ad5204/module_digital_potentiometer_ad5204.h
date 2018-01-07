@@ -2,7 +2,8 @@
 
 enum class EC_AD5204_ANSWER {
     OK              = 0,
-    ARG_ERROR       = 1
+    ARG_ERROR       = 1,
+	SPI_ERROR		= 2
 };
 
 template < uint8_t COUNT >              // Колличество потенциометров на шине SPI.
