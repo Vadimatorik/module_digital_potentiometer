@@ -49,7 +49,7 @@ EC_AD5204_ANSWER ad5204< COUNT >::value_set ( uint8_t chip_number, uint8_t reg, 
     BASE_RESULT tx_res;
 
     this->cfg->cs->reset();
-    tx_res = this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10, SPI::STEP_MODE::DEC );
+	tx_res = this->cfg->spi->tx( &b[ AD5204_BUF_SIZE(COUNT) - 1 ], AD5204_BUF_SIZE(COUNT), 10 );
     this->cfg->cs->set();
 
     if ( this->cfg->mutex != nullptr)
