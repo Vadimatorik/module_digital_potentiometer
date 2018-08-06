@@ -10,9 +10,9 @@ enum class EC_AD5204_ANSWER {
 	SPI_ERROR		= 2
 };
 
-class ad5204 {
+class AD5204 {
 public:
-	ad5204 ( const ad5204Cfg* const cfg );
+	AD5204 ( const ad5204Cfg* const cfg );
 
 	void	connectOn						(	void	);
 	void	connectOff						(	void	);

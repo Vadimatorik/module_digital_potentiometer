@@ -1,19 +1,20 @@
+
 #ifdef MODULE_DIGITAL_POTENTIOMETER_ENABLED
 
-#include "module_digital_potentiometer_ad5204.h"
+#include <module_digital_potentiometer_AD5204.h>
 #include <string.h>
 
-ad5204::ad5204( const ad5204Cfg* const cfg ) : cfg( cfg ) {
+AD5204::AD5204( const ad5204Cfg* const cfg ) : cfg( cfg ) {
 #ifdef DEBUG
 	assertParam( cfg );
 #endif
 }
 
-void ad5204::connectOn ( void ) {
+void AD5204::connectOn ( void ) {
 	this->cfg->shdn->set();
 }
 
-void ad5204::connectOff ( void ) {
+void AD5204::connectOff ( void ) {
 	this->cfg->shdn->reset();
 }
 
@@ -22,7 +23,7 @@ enum class AD5204_WRITE_TYPE {
 	DATA			=	1
 };
 
-EC_AD5204_ANSWER ad5204::valueSet ( const uint8_t chipNumber, const uint8_t reg, uint8_t const value ) {
+EC_AD5204_ANSWER AD5204::valueSet ( const uint8_t chipNumber, const uint8_t reg, uint8_t const value ) {
 	/// Проверка на на выход за пределы (несуществующий чип ли регистр).
 	if ( ( chipNumber >= this->cfg->countChip ) | ( reg >= 4 ) )
 		return EC_AD5204_ANSWER::ARG_ERROR;
@@ -74,7 +75,7 @@ EC_AD5204_ANSWER ad5204::valueSet ( const uint8_t chipNumber, const uint8_t reg,
 	}
 }
 
-EC_AD5204_ANSWER ad5204::valueRead ( const uint8_t chipNumber, const uint8_t reg, uint8_t& outResultData ) {
+EC_AD5204_ANSWER AD5204::valueRead ( const uint8_t chipNumber, const uint8_t reg, uint8_t& outResultData ) {
 	if ( ( chipNumber <  this->cfg->countChip ) && ( reg < 4 ) ) {
 		outResultData = this->cfg->internalStructData[ chipNumber ].regData[ reg ];
 		return EC_AD5204_ANSWER::OK;
