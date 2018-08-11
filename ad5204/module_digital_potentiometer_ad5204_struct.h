@@ -18,7 +18,7 @@ struct ad5204chipData {
 	uint8_t				regData[ 4 ];
 };
 
-struct ad5204Cfg {
+struct ad5204StaticCfg {
 	SpiMaster8BitBase*			const spi;
 	USER_OS_STATIC_MUTEX*		const mutex;		/// Для предотвращения коллизия на шине SPI.
 	PinBase*					const cs;			/// Выбор чипа(-ов). Активный 0.

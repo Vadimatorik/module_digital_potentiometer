@@ -12,7 +12,7 @@ enum class EC_AD5204_ANSWER {
 
 class AD5204 {
 public:
-	AD5204 ( const ad5204Cfg* const cfg );
+	AD5204 ( const ad5204StaticCfg* const cfg );
 
 	void	connectOn						(	void	);
 	void	connectOff						(	void	);
@@ -26,7 +26,7 @@ public:
 												uint8_t&		outResultData	);
 
 private:
-	const ad5204Cfg*			const cfg;
+	const ad5204StaticCfg*			const cfg;
 };
 
 #endif
