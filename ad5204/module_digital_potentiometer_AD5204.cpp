@@ -1,7 +1,7 @@
+#include "module_digital_potentiometer_AD5204.h"
 
 #ifdef MODULE_DIGITAL_POTENTIOMETER_ENABLED
 
-#include <module_digital_potentiometer_AD5204.h>
 #include <string.h>
 
 AD5204::AD5204( const ad5204StaticCfg* const cfg ) : cfg( cfg ) {

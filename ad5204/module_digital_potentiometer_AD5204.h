@@ -1,5 +1,7 @@
 #pragma once
 
+#include "project_config.h"
+
 #ifdef MODULE_DIGITAL_POTENTIOMETER_ENABLED
 
 #include "module_digital_potentiometer_ad5204_struct.h"
