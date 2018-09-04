@@ -59,7 +59,7 @@ EC_AD5204_ANSWER AD5204::valueSet ( const uint8_t chipNumber, const uint8_t reg,
 	if ( this->cfg->mutex != nullptr)
 		USER_OS_TAKE_MUTEX( *this->cfg->mutex, portMAX_DELAY );
 
-	BaseResult tx_res;
+	McHardwareInterfaces::BaseResult tx_res;
 
 	this->cfg->cs->reset();
 	tx_res = this->cfg->spi->tx( &this->cfg->bufOutput[ 1 ], this->cfg->arraySize - 1, 10 );
@@ -68,7 +68,7 @@ EC_AD5204_ANSWER AD5204::valueSet ( const uint8_t chipNumber, const uint8_t reg,
 	if ( this->cfg->mutex != nullptr)
 		USER_OS_GIVE_MUTEX( *this->cfg->mutex );
 
-	if ( tx_res == BaseResult::ok ) {
+	if ( tx_res == McHardwareInterfaces::BaseResult::ok ) {
 		return EC_AD5204_ANSWER::OK;
 	} else {
 		return EC_AD5204_ANSWER::SPI_ERROR;
