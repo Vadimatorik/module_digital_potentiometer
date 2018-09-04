@@ -2,10 +2,13 @@
 
 @startuml
 
-DigitalPotiometer.AD5204		--o			McHardwareInterfaces.Pin
-DigitalPotiometer.AD5204		--o			McHardwareInterfaces.SpiMaster8Bit
+DigitalPotentiometer.AD5204		--o			McHardwareInterfaces.Pin
+DigitalPotentiometer.AD5204		--o			McHardwareInterfaces.SpiMaster8Bit
 
-namespace DigitalPotiometer {
+
+
+
+namespace DigitalPotentiometer {
 
 class AD5204 {
 	{field}-	const Ad5204StaticCfg*			const cfg
@@ -14,11 +17,14 @@ class AD5204 {
 	__Public methods__
 	{method}+	void				connectOn			( void )
 	{method}+	void				connectOff			( void )
-	{method}+	EC_AD5204_ANSWER	setValue			( uint8_t	chipNumber,\n\t\t\t\t\t\t\t\t  uint8_t	reg,\n\t\t\t\t\t\t\t\t  uint8_t	value );
-	{method}+	EC_AD5204_ANSWER	readValue			( int8_t	chipNumber,\n\t\t\t\t\t\t\t\t  uint8_t& 	returnResultData );
+	{method}+	EC_AD5204_ANSWER	setValue			( uint8_t	chipNumber,\n\t\t\t\t\t\t\t\t  uint8_t	reg,\n\t\t\t\t\t\t\t\t  uint8_t	value )
+	{method}+	EC_AD5204_ANSWER	readValue			( int8_t	chipNumber,\n\t\t\t\t\t\t\t\t  uint8_t& 	returnResultData )
 }
 
 }
+
+
+
 
 @enduml
 
@@ -32,7 +38,7 @@ class AD5204 {
 
 #include "module_digital_potentiometer_ad5204_struct.h"
 
-namespace DigitalPotiometer {
+namespace DigitalPotentiometer {
 
 enum class EC_AD5204_ANSWER {
 	OK				= 0,

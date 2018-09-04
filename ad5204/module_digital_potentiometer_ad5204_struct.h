@@ -6,7 +6,7 @@
 #include "mc_hardware_interfaces_spi_master_8bit.h"
 #include "mc_hardware_interfaces_pin.h"
 
-namespace DigitalPotiometer {
+namespace DigitalPotentiometer {
 
 /// Смотрим, сколько целых байт занимает буфер +
 /// если хоть 1 бит еще нужен сверху целого количества, добавляем 1 байт.
@@ -29,7 +29,7 @@ struct Ad5204StaticCfg {
 	uint8_t*									bufOutput;			/// Массив для внутренних нужд
 																	/// (размер получать макросом AD5204_BUF_SIZE).
 	uint32_t									arraySize;			/// AD5204_BUF_SIZE.
-	DigitalPotiometer::AD5204chipData*			internalStructData;	/// Количество структур равно countChip.
+	DigitalPotentiometer::AD5204chipData*		internalStructData;	/// Количество структур равно countChip.
 };
 
 }

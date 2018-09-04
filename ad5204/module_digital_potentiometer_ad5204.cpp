@@ -4,7 +4,7 @@
 
 #include <string.h>
 
-namespace DigitalPotiometer {
+namespace DigitalPotentiometer {
 
 AD5204::AD5204( const Ad5204StaticCfg* const cfg ) : cfg( cfg ) {
 #ifdef DEBUG
