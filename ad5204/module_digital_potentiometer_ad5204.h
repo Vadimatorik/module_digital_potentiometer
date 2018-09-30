@@ -51,8 +51,8 @@ public:
 	AD5204 (	const Ad5204StaticCfg*		const cfg	);
 
 public:
-	void				connectOn			(	void	);
-	void				connectOff			(	void	);
+	void				shdnSet				(	void	);
+	void				shdnReset			(	void	);
 
 	EC_AD5204_ANSWER	setValue			(	uint8_t			chipNumber,
 												uint8_t			reg,

@@ -12,11 +12,11 @@ AD5204::AD5204( const Ad5204StaticCfg* const cfg ) : cfg( cfg ) {
 #endif
 }
 
-void AD5204::connectOn ( void ) {
+void AD5204::shdnSet ( void ) {
 	this->cfg->shdn->set();
 }
 
-void AD5204::connectOff ( void ) {
+void AD5204::shdnReset ( void ) {
 	this->cfg->shdn->reset();
 }
 
