@@ -41,29 +41,30 @@ class AD5204 {
 namespace DigitalPotentiometer {
 
 enum class EC_AD5204_ANSWER {
-	OK				= 0,
-	ARG_ERROR		= 1,
-	SPI_ERROR		= 2
+    OK = 0,
+    ARG_ERROR = 1,
+    SPI_ERROR = 2
 };
 
 class AD5204 {
 public:
-	AD5204 (	const Ad5204StaticCfg*		const cfg	);
+    AD5204 (const Ad5204StaticCfg *const cfg);
 
 public:
-	void				shdnSet				(	void	);
-	void				shdnReset			(	void	);
-
-	EC_AD5204_ANSWER	setValue			(	uint8_t			chipNumber,
-												uint8_t			reg,
-												uint8_t			value	);
-
-	EC_AD5204_ANSWER	readValue			(	uint8_t			chipNumber,
-												uint8_t			reg,
-												uint8_t&		returnResultData	);
+    void shdnSet (void);
+    
+    void shdnReset (void);
+    
+    EC_AD5204_ANSWER setValue (uint8_t chipNumber,
+                               uint8_t reg,
+                               uint8_t value);
+    
+    EC_AD5204_ANSWER readValue (uint8_t chipNumber,
+                                uint8_t reg,
+                                uint8_t &returnResultData);
 
 private:
-	const Ad5204StaticCfg*			const cfg;
+    const Ad5204StaticCfg *const cfg;
 };
 
 }
