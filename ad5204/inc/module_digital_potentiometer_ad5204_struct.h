@@ -21,10 +21,10 @@ struct AD5204chipData {
 };
 
 struct Ad5204StaticCfg {
-    McHardwareInterfaces::SpiMaster8Bit*		const spi;
+    mc_interfaces::SpiMaster8Bit*		const spi;
     USER_OS_STATIC_MUTEX*						const mutex;		/// Для предотвращения коллизия на шине SPI.
-    McHardwareInterfaces::Pin*					const cs;			/// Выбор чипа(-ов). Активный 0.
-    McHardwareInterfaces::Pin*					const shdn;			/// Прямое включение (см. документацию).
+    mc_interfaces::Pin*					const cs;			/// Выбор чипа(-ов). Активный 0.
+    mc_interfaces::Pin*					const shdn;			/// Прямое включение (см. документацию).
     const uint32_t								countChip;			/// Количество потенциометров, включенных последовательно.
     uint8_t*									bufOutput;			/// Массив для внутренних нужд
                                                                     /// (размер получать макросом AD5204_BUF_SIZE).
