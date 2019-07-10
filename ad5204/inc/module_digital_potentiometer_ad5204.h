@@ -2,8 +2,8 @@
 
 @startuml
 
-DigitalPotentiometer.AD5204		--o			McHardwareInterfaces.Pin
-DigitalPotentiometer.AD5204		--o			McHardwareInterfaces.SpiMaster8Bit
+DigitalPotentiometer.AD5204		--o			mc_interfaces.Pin
+DigitalPotentiometer.AD5204		--o			mc_interfaces.SpiMaster8Bit
 
 
 

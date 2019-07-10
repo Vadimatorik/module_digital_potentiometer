@@ -3,8 +3,8 @@
 #ifdef MODULE_DIGITAL_POTENTIOMETER_ENABLED
 
 #include "user_os.h"
-#include "mc_hardware_interfaces_spi_master_8bit.h"
-#include "mc_hardware_interfaces_pin.h"
+#include "mc_spi_master_8bit.h"
+#include "mc_pin.h"
 
 namespace DigitalPotentiometer {
 
