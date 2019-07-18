@@ -70,7 +70,7 @@ EC_AD5204_ANSWER AD5204::setValue ( uint8_t chipNumber, uint8_t reg, uint8_t val
     if ( this->cfg->mutex != nullptr)
         USER_OS_GIVE_MUTEX( *this->cfg->mutex );
 
-    if ( tx_res == mc_interfaces::res::ok ) {
+    if ( tx_res == mc_interfaces::res::err_ok ) {
         return EC_AD5204_ANSWER::OK;
     } else {
         return EC_AD5204_ANSWER::SPI_ERROR;
